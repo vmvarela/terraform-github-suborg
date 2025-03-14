@@ -1,0 +1,18 @@
+{
+    "name": "DevContainer",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
+    "runArgs": [
+      "--platform=linux/amd64"
+    ],
+    "remoteUser": "root",
+    "initializeCommand": "mkdir -p ${HOME}/.config ${HOME}/.ssh",
+    "mounts": [
+      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config,target=/root/.config,type=bind,consistency=cached"
+    ],
+    "features": {
+      "ghcr.io/cirolosapio/devcontainers-features/alpine-docker-outside-of-docker:0": {}
+    }
+  }
