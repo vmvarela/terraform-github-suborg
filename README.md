@@ -50,10 +50,13 @@ No resources.
 |------|-------------|------|---------|:--------:|
 | <a name="input_defaults"></a> [defaults](#input\_defaults) | (Optional) Default configuration | `any` | `null` | no |
 | <a name="input_repositories"></a> [repositories](#input\_repositories) | (Optional) List of repositories | `any` | `null` | no |
+| <a name="input_settings"></a> [settings](#input\_settings) | (Optional) Fixed common configuration | `any` | `null` | no |
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_repositories"></a> [repositories](#output\_repositories) | List of created repositories |
 <!-- END_TF_DOCS -->
 
 ## Authors

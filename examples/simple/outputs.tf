@@ -1,3 +1,3 @@
-output "repositories" {
-  value = module.github.repositories
-}
+# output "repositories" {
+#   value = module.github.repositories
+# }

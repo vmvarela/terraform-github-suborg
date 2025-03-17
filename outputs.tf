@@ -1,5 +1,4 @@
-#
-
 output "repositories" {
-  value = local.repositories
+  description = "List of created repositories"
+  value       = local.repositories
 }

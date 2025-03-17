@@ -61,4 +61,3 @@ locals {
     { for k in local.merge_keys : k => merge(lookup(var.defaults, k, {}), lookup(data, k, {}), lookup(var.defaults, k, {}), {}) }
   ) }
 }
-

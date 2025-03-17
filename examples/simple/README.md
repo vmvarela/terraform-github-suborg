@@ -1,7 +1,7 @@
 # Simple GitHub suborg creation from yaml
 
 Configuration in this directory creates repositories found in `config/repositories.yaml`
-using defaults from `config/defaults.yaml`.
+using settings from `config/settings.yaml` and defaults from `config/defaults.yaml`.
 
 # Usage
 
