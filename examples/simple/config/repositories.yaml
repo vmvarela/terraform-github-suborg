@@ -1,0 +1,41 @@
+test-suborg-simple-1:
+  description: "This is repo-1"
+
+test-suborg-simple-2:
+  description: "This is repo-2"
+  #issue_labels:
+  #  Urgent:
+  #    color: "ff0000"
+  #  Critical:
+  #    color: "ff0000"
+  #    description: "This is a critical issue"
+  autolink_references:
+    ID-:
+      target_url_template: "https://www.mycompany.com/issues/<num>"
+  files:
+    TEST-README.md:
+      from_file: ../../README.md
+  #properties:
+  #  test-property: "value-3"
+  actions_permissions:
+    enabled: false
+  variables:
+    MYVAR: "myvalue"
+
+test-suborg-simple-6:
+  alias: test-suborg-simple-3
+  description: "This is repo-3"
+  homepage_url: "https://www.mycompany.com/issues/"
+  topics: ["topic-1", "topic-2"]
+  vulnerability_alerts: true
+  # pages:
+  #   source:
+  #     branch: master
+  #     path: /docs
+  #   build_type: legacy
+  # collaborators:
+  #   teams:
+  #     someteam: pull
+  deploy_keys:
+    demo:
+      read_only: false

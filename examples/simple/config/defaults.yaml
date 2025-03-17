@@ -1,0 +1,61 @@
+visibility: public
+
+has_issues: true
+
+allow_update_branch: true
+merge_commit_title: PR_TITLE
+merge_commit_message: BLANK
+squash_commit_title: COMMIT_OR_PR_TITLE
+squash_commit_message: COMMIT_MESSAGES
+
+web_commit_signoff_required: true
+
+license_template: gpl-3.0
+
+security: ["dependabot_alerts"]
+
+template: vmvarela/template
+
+default_branch: master
+
+rulesets:
+  test:
+    target: branch
+    exclude:
+      - feature/*
+      - hotfix/*
+      - release/*
+    bypass_roles: ["admin", "write"]
+    forbidden_creation: true
+  test-2:
+    target: tag
+    include:
+      - ~ALL
+    forbidden_deletion: true
+
+webhooks:
+  https://www.mycompany.com/webhook:
+    content_type: json
+    events: [issues]
+
+secrets:
+  MISECRETO:
+    plaintext_value: "123456"
+
+dependabot_secrets:
+  MYSECRET:
+    plaintext_value: "123456"
+
+environments:
+  production:
+    protected_branches: true
+    variables:
+      MYVAR: "myvalue"
+  development:
+    secrets:
+      MYSECRET:
+        plaintext_value: "123456-dev"
+    custom_branch_policies:
+      - releases/*
+# properties:
+#   test-property: "value-999"

@@ -8,5 +8,5 @@ jobs:
     secrets: inherit
     permissions: write-all
     uses: vmvarela/workflows/.github/workflows/release.yaml@v0.3.0
-    # with:
-    #   devcontainer: 'ghcr.io/${{ github.repository }}:devcontainer'
+    with:
+      devcontainer: 'ghcr.io/vmvarela/terraform-github-repository:devcontainer'
