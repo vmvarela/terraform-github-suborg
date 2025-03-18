@@ -10,6 +10,6 @@ autolink_references:
   JIRA-:
     target_url_template: "https://jira.mycompany.com/issues/<num>"
 
-homepage_url: "https://www.google.com"
+homepage: "https://www.google.com"
 
 topics: ["settings-a", "settings-b"]

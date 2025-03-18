@@ -5,6 +5,6 @@ issue_labels:
     color: "00ff00"
     description: "This is a default issue"
 
-homepage_url: "https://www.microsoft.com"
+homepage: "https://www.microsoft.com"
 
 topics: ["default-a", "default-b"]

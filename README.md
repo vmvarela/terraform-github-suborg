@@ -38,7 +38,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_repo"></a> [repo](#module\_repo) | vmvarela/repository/github | ~> 0.2 |
+| <a name="module_repo"></a> [repo](#module\_repo) | vmvarela/repository/github | >= 0.2.4 |
 
 ## Resources
 
