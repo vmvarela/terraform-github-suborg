@@ -1,23 +1,20 @@
 locals {
-  merge_keys = [
-    "autolink_references",
-    "branches",
-    "dependabot_secrets",
-    "deploy_keys",
-    "environments",
-    "files",
-    "issue_labels",
-    "properties",
-    "rulesets",
-    "secrets",
-    "teams",
-    "users",
-    "variables",
-    "webhooks"
-  ]
-  union_keys = [
-    "topics"
-  ]
+  # merge settings, each repository and defaults
+  repositories = { for repo, data in var.repositories : try(data.alias, repo) => merge(
+    { for k in local.coalesce_keys : k => try(coalesce(lookup(var.settings, k, null), lookup(data, k, null), lookup(var.defaults, k, null)), null) },
+    { for k in local.union_keys : k =>
+      length(setunion([], lookup(data, k, []), lookup(var.settings, k, []))) > 0 ?
+      setunion([], lookup(data, k, []), lookup(var.settings, k, [])) :
+      lookup(var.defaults, k, [])
+    },
+    { for k in local.merge_keys : k =>
+      length(merge({}, lookup(data, k, {}), lookup(var.settings, k, {}))) > 0 ?
+      merge({}, lookup(data, k, {}), lookup(var.settings, k, {})) :
+      lookup(var.defaults, k, {})
+    }
+  ) }
+
+  # keys to set if empty: (1) settings, (2) repository, (3) defaults
   coalesce_keys = [
     "actions_access_level",
     "actions_permissions",
@@ -55,17 +52,28 @@ locals {
     "vulnerability_alerts",
     "web_commit_signoff_required"
   ]
-  repositories = { for repo, data in var.repositories : try(data.alias, repo) => merge(
-    { for k in local.coalesce_keys : k => try(coalesce(lookup(var.settings, k, null), lookup(data, k, null), lookup(var.defaults, k, null)), null) },
-    { for k in local.union_keys : k =>
-      length(setunion([], lookup(data, k, []), lookup(var.settings, k, []))) > 0 ?
-      setunion([], lookup(data, k, []), lookup(var.settings, k, [])) :
-      lookup(var.defaults, k, [])
-    },
-    { for k in local.merge_keys : k =>
-      length(merge({}, lookup(data, k, {}), lookup(var.settings, k, {}))) > 0 ?
-      merge({}, lookup(data, k, {}), lookup(var.settings, k, {})) :
-      lookup(var.defaults, k, {})
-    }
-  ) }
+
+  # keys to merge (settings + repository), defaults if empty
+  merge_keys = [
+    "autolink_references",
+    "branches",
+    "dependabot_secrets",
+    "deploy_keys",
+    "environments",
+    "files",
+    "issue_labels",
+    "properties",
+    "rulesets",
+    "secrets",
+    "teams",
+    "users",
+    "variables",
+    "webhooks"
+  ]
+
+  # keys to add (settings + repository), defaults if empty
+  union_keys = [
+    "topics"
+  ]
+
 }

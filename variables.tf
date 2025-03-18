@@ -1,17 +1,17 @@
-variable "repositories" {
-  description = "(Optional) List of repositories"
+variable "defaults" {
+  description = "(Optional) Default configuration (if empty)"
   type        = any
-  default     = null
+  default     = {}
 }
 
-variable "defaults" {
-  description = "(Optional) Default configuration"
+variable "repositories" {
+  description = "(Optional) Repositories settings"
   type        = any
-  default     = null
+  default     = {}
 }
 
 variable "settings" {
-  description = "(Optional) Fixed common configuration"
+  description = "(Optional) Fixed common configuration (cannot be overwritten)"
   type        = any
-  default     = null
+  default     = {}
 }

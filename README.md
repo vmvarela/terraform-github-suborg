@@ -48,9 +48,9 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_defaults"></a> [defaults](#input\_defaults) | (Optional) Default configuration | `any` | `null` | no |
-| <a name="input_repositories"></a> [repositories](#input\_repositories) | (Optional) List of repositories | `any` | `null` | no |
-| <a name="input_settings"></a> [settings](#input\_settings) | (Optional) Fixed common configuration | `any` | `null` | no |
+| <a name="input_defaults"></a> [defaults](#input\_defaults) | (Optional) Default configuration (if empty) | `any` | `{}` | no |
+| <a name="input_repositories"></a> [repositories](#input\_repositories) | (Optional) Repositories settings | `any` | `{}` | no |
+| <a name="input_settings"></a> [settings](#input\_settings) | (Optional) Fixed common configuration (cannot be overwritten) | `any` | `{}` | no |
 
 ## Outputs
 
