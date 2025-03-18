@@ -57,7 +57,15 @@ locals {
   ]
   repositories = { for repo, data in var.repositories : try(data.alias, repo) => merge(
     { for k in local.coalesce_keys : k => try(coalesce(lookup(var.settings, k, null), lookup(data, k, null), lookup(var.defaults, k, null)), null) },
-    { for k in local.union_keys : k => setunion(lookup(var.defaults, k, []), lookup(data, k, []), lookup(var.defaults, k, []), []) },
-    { for k in local.merge_keys : k => merge(lookup(var.defaults, k, {}), lookup(data, k, {}), lookup(var.defaults, k, {}), {}) }
+    { for k in local.union_keys : k =>
+      length(setunion([], lookup(data, k, []), lookup(var.settings, k, []))) > 0 ?
+      setunion([], lookup(data, k, []), lookup(var.settings, k, [])) :
+      lookup(var.defaults, k, [])
+    },
+    { for k in local.merge_keys : k =>
+      length(merge({}, lookup(data, k, {}), lookup(var.settings, k, {}))) > 0 ?
+      merge({}, lookup(data, k, {}), lookup(var.settings, k, {})) :
+      lookup(var.defaults, k, {})
+    }
   ) }
 }

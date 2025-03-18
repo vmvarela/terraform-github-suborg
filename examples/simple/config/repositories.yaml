@@ -1,14 +1,15 @@
 test-suborg-simple-1:
   description: "This is repo-1"
+  topics: ["repository-topic"]
 
 test-suborg-simple-2:
   description: "This is repo-2"
-  #issue_labels:
-  #  Urgent:
-  #    color: "ff0000"
-  #  Critical:
-  #    color: "ff0000"
-  #    description: "This is a critical issue"
+  issue_labels:
+    Urgent:
+      color: "ff0000"
+    Critical:
+      color: "ff0000"
+      description: "This is a critical issue"
   autolink_references:
     ID-:
       target_url_template: "https://www.mycompany.com/issues/<num>"
