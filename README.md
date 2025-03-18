@@ -1,6 +1,6 @@
 # GitHub Sub-Org Terraform module
 
-Terraform module which creates groups of repositories on GitHub.
+This module simplifies the management of multiple repositories by applying common settings, permissions, and configurations in a unified way.
 
 ## Usage
 
