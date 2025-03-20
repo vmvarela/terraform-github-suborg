@@ -15,3 +15,9 @@ variable "settings" {
   type        = any
   default     = {}
 }
+
+# variable "organization" {
+#   description = "(Required) Org name."
+#   type        = string
+#   default     = null
+# }
