@@ -1,9 +1,7 @@
 visibility: public
 
 issue_labels:
-  Default:
-    color: "00ff00"
-    description: "This is a default issue"
+  Default: "This is a default issue"
 
 homepage: "https://www.microsoft.com"
 

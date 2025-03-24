@@ -22,7 +22,10 @@ locals {
   # keys to set if empty: (1) settings, (2) repository, (3) defaults
   coalesce_keys = [
     "actions_access_level",
-    "actions_permissions",
+    "actions_allowed_github",
+    "actions_allowed_patterns",
+    "actions_allowed_policy",
+    "actions_allowed_verified",
     "allow_merge_commit",
     "allow_rebase_merge",
     "allow_squash_merge",
@@ -33,6 +36,7 @@ locals {
     "default_branch",
     "delete_branch_on_merge",
     "description",
+    "dependabot_copy_secrets",
     "enable_actions",
     "enable_advanced_security",
     "enable_secret_scanning",
@@ -48,7 +52,10 @@ locals {
     "license_template",
     "merge_commit_message",
     "merge_commit_title",
-    "pages",
+    "pages_build_type",
+    "pages_cname",
+    "pages_source_branch",
+    "pages_source_path",
     "private",
     "squash_merge_commit_message",
     "squash_merge_commit_title",
@@ -63,21 +70,25 @@ locals {
     "autolink_references",
     "branches",
     "custom_properties",
+    "custom_properties_types",
     "dependabot_secrets",
+    "dependabot_secrets_encrypted",
     "deploy_keys",
     "environments",
-    "files",
     "issue_labels",
+    "issue_labels_colors",
     "rulesets",
     "secrets",
+    "secrets_encrypted",
     "teams",
     "users",
     "variables",
-    "webhooks"
   ]
 
   # keys to add (settings + repository), defaults if empty
   union_keys = [
-    "topics"
+    "files",
+    "topics",
+    "webhooks"
   ]
 }

@@ -1,15 +1,8 @@
 visibility: public
 
-# issue_labels:
-#   Settings:
-#     color: "00ff00"
-#     description: "This is a fixed issue"
-
-
 autolink_references:
-  JIRA-:
-    target_url_template: "https://jira.mycompany.com/issues/<num>"
+  JIRA-: "https://jira.mycompany.com/issues/<num>"
 
 homepage: "https://www.google.com"
 
-topics: ["settings-a", "settings-b"]
+topics: ["terraform-test", "settings-a", "settings-b"]
