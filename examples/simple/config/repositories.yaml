@@ -1,8 +1,8 @@
-test-suborg-simple-1:
+simple-1:
   description: "This is repo-1"
   topics: ["repository-topic"]
 
-test-suborg-simple-2:
+simple-2:
   description: "This is repo-2"
   issue_labels:
     Urgent: "This is an urgent issue"
@@ -18,7 +18,7 @@ test-suborg-simple-2:
   variables:
     MYVAR: "myvalue"
 
-test-suborg-simple-6:
+simple-6:
   alias: test-suborg-simple-3
   description: "This is repo-3"
   homepage: "https://www.mycompany.com/issues/"

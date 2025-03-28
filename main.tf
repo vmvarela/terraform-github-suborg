@@ -1,14 +1,14 @@
 module "repo" {
   for_each                               = local.repositories
   source                                 = "vmvarela/repository/github"
-  version                                = ">= 0.3.0"
-  name                                   = each.key
-  alias                                  = try(each.value.alias, each.key)
+  version                                = "0.3.3"
   actions_access_level                   = each.value.actions_access_level
   actions_allowed_github                 = each.value.actions_allowed_github
   actions_allowed_patterns               = each.value.actions_allowed_patterns
   actions_allowed_policy                 = each.value.actions_allowed_policy
   actions_allowed_verified               = each.value.actions_allowed_verified
+  alias                                  = try(each.value.alias, each.key)
+  allow_auto_merge                       = each.value.allow_auto_merge
   allow_merge_commit                     = each.value.allow_merge_commit
   allow_rebase_merge                     = each.value.allow_rebase_merge
   allow_squash_merge                     = each.value.allow_squash_merge
@@ -22,19 +22,21 @@ module "repo" {
   custom_properties_types                = each.value.custom_properties_types
   default_branch                         = each.value.default_branch
   delete_branch_on_merge                 = each.value.delete_branch_on_merge
+  dependabot_copy_secrets                = each.value.dependabot_copy_secrets
   dependabot_secrets                     = each.value.dependabot_secrets
   dependabot_secrets_encrypted           = each.value.dependabot_secrets_encrypted
   deploy_keys                            = each.value.deploy_keys
+  deploy_keys_path                       = each.value.deploy_keys_path
   description                            = each.value.description
   enable_actions                         = each.value.enable_actions
   enable_advanced_security               = each.value.enable_advanced_security
   enable_secret_scanning                 = each.value.enable_secret_scanning
   enable_secret_scanning_push_protection = each.value.enable_secret_scanning_push_protection
   enable_vulnerability_alerts            = each.value.enable_vulnerability_alerts
+  enable_dependabot_security_updates     = each.value.enable_dependabot_security_updates
   environments                           = each.value.environments
   files                                  = each.value.files
   gitignore_template                     = each.value.gitignore_template
-  has_downloads                          = each.value.has_downloads
   has_issues                             = each.value.has_issues
   has_projects                           = each.value.has_projects
   has_wiki                               = each.value.has_wiki
@@ -45,6 +47,7 @@ module "repo" {
   license_template                       = each.value.license_template
   merge_commit_message                   = each.value.merge_commit_message
   merge_commit_title                     = each.value.merge_commit_title
+  name                                   = try(format(var.spec, each.key), each.key)
   pages_build_type                       = each.value.pages_build_type
   pages_cname                            = each.value.pages_cname
   pages_source_branch                    = each.value.pages_source_branch

@@ -8,10 +8,15 @@ This module simplifies the management of multiple repositories by applying commo
 module "suborg" {
   source = "github.com/vmvarela/terraform-github-suborg"
   repositories = {
-    my-repo = {
+    my-repo-1 = {
       visibility     = "private"
       default_branch = "main"
       template       = "MarketingPipeline/Awesome-Repo-Template"
+    }
+    my-repo-2 = {
+      visibility     = "public"
+      default_branch = "master"
+      template       = "vmvarela/template"
     }
   }
 }
@@ -38,7 +43,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_repo"></a> [repo](#module\_repo) | vmvarela/repository/github | >= 0.3.0 |
+| <a name="module_repo"></a> [repo](#module\_repo) | vmvarela/repository/github | 0.3.3 |
 
 ## Resources
 
@@ -48,9 +53,12 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_defaults"></a> [defaults](#input\_defaults) | (Optional) Default configuration (if empty) | `any` | `{}` | no |
-| <a name="input_repositories"></a> [repositories](#input\_repositories) | (Optional) Repositories settings | `any` | `{}` | no |
-| <a name="input_settings"></a> [settings](#input\_settings) | (Optional) Fixed common configuration (cannot be overwritten) | `any` | `{}` | no |
+| <a name="input_defaults"></a> [defaults](#input\_defaults) | Default configuration for repositories (overwritten by repository settings) | `any` | `{}` | no |
+| <a name="input_repositories"></a> [repositories](#input\_repositories) | Map of repositories (key: name, value: settings). See terraform-github-repository module for details. | `any` | `{}` | no |
+| <a name="input_settings"></a> [settings](#input\_settings) | Fixed common configuration (cannot be overwritten) | `any` | `{}` | no |
+| <a name="input_spec"></a> [spec](#input\_spec) | Format specification for repository names (i.e "prefix-%s") | `string` | `null` | no |
+| <a name="input_teams"></a> [teams](#input\_teams) | The list of collaborators (teams) of all repositories | `map(string)` | `{}` | no |
+| <a name="input_users"></a> [users](#input\_users) | The list of collaborators (users) of al repositories | `map(string)` | `{}` | no |
 
 ## Outputs
 

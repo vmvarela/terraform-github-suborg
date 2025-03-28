@@ -1,30 +1,28 @@
 {
-    "name": "Terraform DevContainer",
-    "image": "ghcr.io/vmvarela/terraform-github-repository:devcontainer",
-    "runArgs": [
-      "--platform=linux/amd64"
-    ],
-    "remoteUser": "root",
-    "initializeCommand": "mkdir -p ${HOME}/.config ${HOME}/.ssh",
-    "mounts": [
-      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
-      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config,target=/root/.config,type=bind,consistency=cached"
-    ],
-    "features": {
-      "ghcr.io/cirolosapio/devcontainers-features/alpine-docker-outside-of-docker:0": {},
-      "ghcr.io/devcontainers-extra/features/act:1": {}
-      },
-      "customizations": {
-        "vscode": {
-          "settings": {
-            "terminal.integrated.defaultProfile.linux": "zsh"
-          },
-          "extensions": [
-              "ms-azuretools.vscode-docker",
-              "github.vscode-github-actions",
-              "GitHub.vscode-pull-request-github",
-              "matheusq94.TFS"
-          ]
-        }
+  "name": "Terraform DevContainer",
+  "image": "ghcr.io/vmvarela/terraform-github-repository:devcontainer",
+  "runArgs": [
+    "--platform=linux/amd64",
+    "--hostname=devcontainer"
+  ],
+  "remoteUser": "root",
+  "initializeCommand": "mkdir -p ${HOME}/.config ${HOME}/.ssh; chmod 700 ${HOME}/.ssh",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config,target=/root/.config,type=bind,consistency=cached"
+  ],
+  "features": {
+    "ghcr.io/cirolosapio/devcontainers-features/alpine-docker-outside-of-docker:0": {},
+    "ghcr.io/devcontainers-extra/features/act:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+          "matheusq94.TFS"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "fish"
+      }
     }
+  }
 }
