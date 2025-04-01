@@ -42,3 +42,6 @@ keys_pem
 deploy_keys
 corp
 bin
+
+# ignore direnv file
+.envrc
