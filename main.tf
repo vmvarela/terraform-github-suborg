@@ -9,14 +9,6 @@ terraform {
 }
 
 locals {
-  #  # team id from a team name
-  #  team_id = { for t in data.github_organization_teams.this.teams : t.name => t.id }
-  #
-  #  # reposity id from its repository name
-  #  repository_id = { for r in data.github_repositories.this.names :
-  #    r => element(data.github_repositories.this.repo_ids, index(data.github_repositories.this.names, r))
-  #  }
-
   # you can set var.users and var.teams or var.settings.users and var.settings.teams
   settings = merge(var.settings, {
     "users" = merge(var.users, try(var.settings.users, {}))
@@ -118,7 +110,7 @@ locals {
 module "repo" {
   for_each                               = local.repositories
   source                                 = "vmvarela/repository/github"
-  version                                = "0.3.3"
+  version                                = "0.4.0"
   actions_access_level                   = each.value.actions_access_level
   actions_allowed_github                 = each.value.actions_allowed_github
   actions_allowed_patterns               = each.value.actions_allowed_patterns
