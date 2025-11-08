@@ -1,8 +1,0 @@
-visibility: public
-
-autolink_references:
-  JIRA-: "https://jira.mycompany.com/issues/<num>"
-
-homepage: "https://www.google.com"
-
-topics: ["terraform-test", "settings-a", "settings-b"]

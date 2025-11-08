@@ -1,0 +1,6 @@
+# Copy this file to terraform.tfvars and fill in your values
+
+github_organization = "your-github-org"
+
+# Optional: override the repository name format
+# repository_name_format = "mycompany-%s"

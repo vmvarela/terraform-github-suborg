@@ -1,8 +1,0 @@
-visibility: public
-
-issue_labels:
-  Default: "This is a default issue"
-
-homepage: "https://www.microsoft.com"
-
-topics: ["default-a", "default-b"]
